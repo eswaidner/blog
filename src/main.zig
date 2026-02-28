@@ -22,7 +22,12 @@ const Project = struct {
 };
 
 const articles = [_]Article{
-    .{ .id = "test", .name = "Test", .date = "", .content = @embedFile("./articles/test.md") },
+    .{
+        .id = "test",
+        .name = "Test",
+        .date = "Feb 28, 2026",
+        .content = @embedFile("./articles/test.md"),
+    },
 };
 
 const projects = [_]Project{};
@@ -66,10 +71,10 @@ fn generatePage(comptime path: []const u8, content: []const u8) !void {
     const out = &writer.interface;
 
     try zts.writeHeader(page_tmpl, out);
-    try zts.print(page_tmpl, "content", .{content}, out);
 
-    //TODO social links, copyright notice
-    try zts.print(page_tmpl, "footer", .{"Footer"}, out);
+    try zts.write(page_tmpl, "header", out);
+    try zts.print(page_tmpl, "content", .{content}, out);
+    try zts.write(page_tmpl, "footer", out);
 
     try out.flush();
 }

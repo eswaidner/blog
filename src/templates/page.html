@@ -8,9 +8,36 @@
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
-    .content
-    <div id="content">{s}</div>
-    .footer
-    <div id="footer">{s}</div>
+    <div id="body-content">
+      .header
+      <div id="header">
+        <a href="./index.html">eswaidner</a>
+        <div id="social-links">
+          <a
+            target="_blank"
+            href="https://github.com/eswaidner"
+          >
+            <img src="./assets/github.svg" />
+          </a>
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/in/ethanswaidner/"
+          >
+            <img src="./assets/linkedin.svg" />
+          </a>
+        </div>
+      </div>
+      .content
+      <div id="content">{s}</div>
+      .footer
+      <div id="footer">
+        <div>Built with <a target="_blank" id="zig-link" href="https://ziglang.org/">Zig &#x26A1;</a></div>
+        <div id="copyright" />
+      </div>
+      <script>
+        const str = `/* &copy; ${new Date().getFullYear()} Ethan Swaidner */`;
+        document.getElementById("copyright").innerHTML = str;
+      </script>
+    </div>
   </body>
 </html>
