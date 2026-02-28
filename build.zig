@@ -5,6 +5,7 @@ pub fn build(b: *std.Build) void {
     const optimize = b.standardOptimizeOption(.{});
 
     const zts = b.dependency("zts", .{ .target = target, .optimize = optimize });
+    const zmd = b.dependency("zmd", .{ .target = target, .optimize = optimize });
 
     const exe = b.addExecutable(.{
         .name = "blog",
@@ -12,7 +13,10 @@ pub fn build(b: *std.Build) void {
             .root_source_file = b.path("src/main.zig"),
             .target = target,
             .optimize = optimize,
-            .imports = &.{.{ .name = "zts", .module = zts.module("zts") }},
+            .imports = &.{
+                .{ .name = "zts", .module = zts.module("zts") },
+                .{ .name = "zmd", .module = zmd.module("zmd") },
+            },
         }),
     });
 
@@ -25,12 +29,12 @@ pub fn build(b: *std.Build) void {
 
     run_cmd.step.dependOn(b.getInstallStep());
 
-    const install_dir = b.addInstallDirectory(.{
+    const assets_dir = b.addInstallDirectory(.{
         .source_dir = b.path("./src/assets"),
         .install_dir = .prefix,
         .install_subdir = "site/assets",
     });
-    b.getInstallStep().dependOn(&install_dir.step);
+    b.getInstallStep().dependOn(&assets_dir.step);
 
     const options = b.addOptions();
     options.addOption([]const u8, "install_prefix", b.install_prefix);

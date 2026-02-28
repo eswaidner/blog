@@ -36,6 +36,10 @@
             .url = "git+https://github.com/zigster64/zts.git#ca98e23fcf1a4fa331c80f5cd2e72f6838daf7ee",
             .hash = "zts-0.14.1-_M80Of22AgBwArz6uCXR49IoEjlzNt5yhu7KV8cWl5jr",
         },
+        .zmd = .{
+            .url = "git+https://github.com/jetzig-framework/zmd.git#c7ecad6fe3d2312abda13efdec314cf59716560b",
+            .hash = "zmd-0.1.0-H8YV7V_rAACiIbtOcECYvUcG-KawejQDI1nLR4Pi-fx7",
+        },
     },
     .paths = .{
         "build.zig",
