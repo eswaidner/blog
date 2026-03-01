@@ -27,7 +27,7 @@ jobs:
           version: 0.15.2
 
       - name: Build
-        run: zig build --prefix zig-out
+        run: zig build run --prefix zig-out
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
