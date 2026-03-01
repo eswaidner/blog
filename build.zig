@@ -32,7 +32,7 @@ pub fn build(b: *std.Build) void {
     const assets_dir = b.addInstallDirectory(.{
         .source_dir = b.path("./src/assets"),
         .install_dir = .prefix,
-        .install_subdir = "site/assets",
+        .install_subdir = "./assets",
     });
     b.getInstallStep().dependOn(&assets_dir.step);
 

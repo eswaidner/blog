@@ -29,10 +29,13 @@ jobs:
       - name: Build
         run: zig build run --prefix zig-out
 
+      - name: Remove bin directory
+        run: rm -rf zig-out/bin
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: zig-out/site
+          path: zig-out
 
   deploy:
     needs: build

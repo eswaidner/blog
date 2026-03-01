@@ -7,7 +7,7 @@ const pages = @import("./pages.zig");
 var gpa = std.heap.DebugAllocator(.{}).init;
 const allocator = gpa.allocator();
 
-const out_dir = config.install_prefix ++ "/site";
+const out_dir = config.install_prefix;
 
 pub const Article = struct {
     id: []const u8,
@@ -50,7 +50,7 @@ fn generateIndex() !void {
             try generateArticle(project.article);
             try zts.print(home_tmpl, "project", .{
                 project.cover_image_path,
-                out_dir ++ "/" ++ project.article.id ++ ".html",
+                "./" ++ project.article.id ++ ".html",
                 project.article.name,
                 project.description,
             }, writer);
