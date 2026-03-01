@@ -16,6 +16,7 @@
   --bg-20: #2a2b36;
 
   --hl-00: #50ffc8;
+  --hl-05: #439786;
   --hl-10: #225763;
   --hl-20: #1a454f;
 }
@@ -38,7 +39,7 @@ body {
 a {
   text-decoration: none;
   font-weight: bold;
-  color: unset;
+  color: var(--hl-05);
 }
 
 a:hover {
@@ -90,6 +91,7 @@ main > p > img {
   max-width: 100%;
   display: block;
   border-radius: 5px;
+  margin: 0 auto;
 }
 
 h1,
@@ -111,6 +113,12 @@ h4 {
   font-family: monospace;
   font-size: 1.15rem;
   font-weight: normal;
+  color: var(--fg-20);
+  transition: all 50ms;
+}
+
+#home-link:hover {
+  color: var(--hl-00);
 }
 
 #job-title {
@@ -132,6 +140,15 @@ h4 {
   justify-content: center;
   align-items: center;
   gap: 20px;
+}
+
+#social-links > a {
+  color: var(--fg-20);
+  transition: all 50ms;
+}
+
+#social-links > a:hover {
+  color: var(--hl-00);
 }
 
 #zig-link {
@@ -161,6 +178,7 @@ h4 {
   height: fit-content;
   padding: 10px 10px;
   transition: all 50ms;
+  color: var(--fg-10);
 }
 
 .article-link:hover {
