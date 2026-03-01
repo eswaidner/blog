@@ -17,8 +17,31 @@ const Article = struct {
 
 const Project = struct {
     cover_image_path: []const u8,
-    tags: [][]const u8,
+    description: []const u8,
     article: Article,
+};
+
+const projects = [_]Project{
+    .{
+        .cover_image_path = "./assets/drone-fleet-thumb.webp",
+        .description = "Build fleets of autonomous drones using simulated parts",
+        .article = .{
+            .id = "drone-fleet",
+            .name = "Drone Fleet",
+            .date = "Feb 28, 2026",
+            .content = @embedFile("./articles/drone-fleet.md"),
+        },
+    },
+    .{
+        .cover_image_path = "./assets/aquitech-thumb.webp",
+        .description = "Build a submarine and battle other players in online matches",
+        .article = .{
+            .id = "aquitech",
+            .name = "Aquitech",
+            .date = "Feb 28, 2026",
+            .content = @embedFile("./articles/aquitech.md"),
+        },
+    },
 };
 
 const articles = [_]Article{
@@ -28,9 +51,19 @@ const articles = [_]Article{
         .date = "Feb 28, 2026",
         .content = @embedFile("./articles/test.md"),
     },
+    .{
+        .id = "test-2",
+        .name = "Test with a Really Really Long Name",
+        .date = "Feb 29, 2026",
+        .content = @embedFile("./articles/test.md"),
+    },
+    .{
+        .id = "test-3",
+        .name = "Test",
+        .date = "Feb 28, 2026",
+        .content = @embedFile("./articles/test.md"),
+    },
 };
-
-const projects = [_]Project{};
 
 pub fn main() !void {
     try generate();
@@ -45,7 +78,37 @@ fn generate() !void {
 }
 
 fn generateIndex() !void {
-    try generatePage("/index.html", "Index");
+    const home_tmpl = @embedFile("./templates/home.html");
+
+    var home_str = std.ArrayList(u8).empty;
+    defer home_str.deinit(allocator);
+    const writer = home_str.writer(allocator);
+
+    try zts.writeHeader(home_tmpl, writer);
+
+    try zts.print(home_tmpl, "section", .{ "Projects", "Projects" }, writer);
+    inline for (projects) |project| {
+        try generateArticle(project.article);
+        try zts.print(home_tmpl, "project", .{
+            project.cover_image_path,
+            out_dir ++ "/" ++ project.article.id ++ ".html",
+            project.article.name,
+            project.description,
+        }, writer);
+
+        try zts.write(home_tmpl, "projectend", writer);
+    }
+    try zts.write(home_tmpl, "sectionend", writer);
+
+    try zts.print(home_tmpl, "section", .{ "Articles", "Articles" }, writer);
+    inline for (articles) |article| {
+        try zts.print(home_tmpl, "article", .{ article.id, article.name, article.date }, writer);
+    }
+    try zts.write(home_tmpl, "sectionend", writer);
+
+    try zts.write(home_tmpl, "end", writer);
+
+    try generatePage("/index.html", home_str.items);
 
     //TODO about me section
 
@@ -56,8 +119,11 @@ fn generateIndex() !void {
 
 fn generateArticle(comptime article: Article) !void {
     const path = "/" ++ article.id ++ ".html";
-    const html_content = try zmd.parse(allocator, article.content, .{});
-    try generatePage(path, html_content);
+
+    const content = "#" ++ article.name ++ "\n" ++ article.date ++ "\n" ++ article.content;
+
+    const html = try zmd.parse(allocator, content, .{});
+    try generatePage(path, html);
 }
 
 fn generatePage(comptime path: []const u8, content: []const u8) !void {
