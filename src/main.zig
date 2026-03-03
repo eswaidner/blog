@@ -12,6 +12,7 @@ const out_dir = config.install_prefix;
 pub const Article = struct {
     id: []const u8,
     name: []const u8,
+    description: []const u8,
     date: []const u8,
     content: []const u8,
 };
@@ -71,7 +72,11 @@ fn generateIndex() !void {
 
     try zts.write(home_tmpl, "end", writer);
 
-    try generatePage("/index.html", home_str.items);
+    try generatePage(
+        "/index.html",
+        home_str.items,
+        "I'm a software engineer building systems that empower people to create.",
+    );
 }
 
 fn generateArticle(comptime article: Article) !void {
@@ -80,10 +85,10 @@ fn generateArticle(comptime article: Article) !void {
     const content = "#" ++ article.name ++ "\n" ++ article.date ++ "\n" ++ article.content;
 
     const html = try zmd.parse(allocator, content, .{});
-    try generatePage(path, html);
+    try generatePage(path, html, article.description);
 }
 
-fn generatePage(comptime path: []const u8, content: []const u8) !void {
+fn generatePage(comptime path: []const u8, content: []const u8, description: []const u8) !void {
     const page_tmpl = @embedFile("./templates/page.html");
 
     const file = try std.fs.cwd().createFile(out_dir ++ path, .{});
@@ -94,7 +99,8 @@ fn generatePage(comptime path: []const u8, content: []const u8) !void {
     const out = &writer.interface;
 
     try zts.writeHeader(page_tmpl, out);
-
+    try zts.print(page_tmpl, "description", .{description}, out);
+    try zts.write(page_tmpl, "descriptionend", out);
     try zts.write(page_tmpl, "header", out);
     try zts.print(page_tmpl, "content", .{content}, out);
     try zts.write(page_tmpl, "footer", out);

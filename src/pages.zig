@@ -8,7 +8,8 @@ pub const projects = [_]main.Project{
         .article = .{
             .id = "drone-fleet",
             .name = "Drone Fleet",
-            .date = "Feb 28, 2026",
+            .description = "Engineering/puzzle game where you build fleets of autonomous drones using simulated parts.",
+            .date = "2023-2024",
             .content = @embedFile("./articles/drone-fleet.md"),
         },
     },
@@ -18,7 +19,8 @@ pub const projects = [_]main.Project{
         .article = .{
             .id = "aquitech",
             .name = "Aquitech",
-            .date = "Feb 28, 2026",
+            .description = "Online multiplayer PvP game where you build a submarine and battle other players.",
+            .date = "2021",
             .content = @embedFile("./articles/aquitech.md"),
         },
     },
@@ -28,7 +30,8 @@ pub const projects = [_]main.Project{
         .article = .{
             .id = "innovation-teams",
             .name = "Innovation Teams",
-            .date = "Feb 28, 2026",
+            .description = "Innovation consulting projects for real-world clients as part of the UCCS Bachelor of Innovation program.",
+            .date = "2024-2025",
             .content = @embedFile("./articles/innovation-teams.md"),
         },
     },
@@ -38,7 +41,8 @@ pub const projects = [_]main.Project{
         .article = .{
             .id = "track-cycling",
             .name = "Track Cycling",
-            .date = "Feb 28, 2026",
+            .description = "Raced internationally as an athlete on the track cycling Olympic Development Program (ODP).",
+            .date = "2016-2021",
             .content = @embedFile("./articles/track-cycling.md"),
         },
     },
