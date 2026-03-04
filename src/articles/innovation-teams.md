@@ -14,7 +14,7 @@ As part of my final BI teams course, I co-led a team of six students providing i
 
 *"If you represent what leadership looks like coming out of this class, you guys are going in a great direction."* - [Bernard Gay](https://www.linkedin.com/in/bernard-gay-6569b66/), Chairman of BFNI and CIO at [Novolex](https://novolex.com/)
 
-![Screenshots of pages from the BFNI mobile website.](./assets/bfni.png)
+![Screenshots of pages from the BFNI mobile website.](./assets/bfni.webp)
 
 ## AAA Medicaid
 
@@ -22,5 +22,5 @@ AAA Medicaid Consulting is a local Colorado Springs small business dedicated to 
 
 I was a member of the BI innovation consulting team that worked with AAA Medicaid to help them grow. Our team's main focus was creating data-backed visual resources that communicated the value of AAA Medicaid's services. We delivered a professionally designed PowerPoint and trifold pamphlet that AAA Medicaid could utilize in meetings with investors and potential clients.
 
-![Front view of the trifold pamphlet produced for AAA Medicaid.](./assets/medicaid_1.png)
-![Rear view of the trifold pamphlet produced for AAA Medicaid.](./assets/medicaid_2.png)
+![Front view of the trifold pamphlet produced for AAA Medicaid.](./assets/medicaid_1.webp)
+![Rear view of the trifold pamphlet produced for AAA Medicaid.](./assets/medicaid_2.webp)

@@ -4,4 +4,4 @@ Drone Fleet is my favorite of the many game development projects I have started.
 
 This is the last project I built with Unity Engine (C#) before moving on to experimenting with custom frameworks. The visual style is a combination of vector graphics I made in Adobe Illustrator and shaders written in HLSL.
 
-![Screenshot of the Drone Fleet build mode menu.](./assets/drone-fleet.png)
+![Screenshot of the Drone Fleet build mode menu.](./assets/drone-fleet.webp)

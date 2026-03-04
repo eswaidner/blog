@@ -20,7 +20,7 @@ if [ ${#convert_files[@]} -gt 0 ]; then
     -quality 85 \
     "${convert_files[@]}"
 
-  # rm "${convert_files[@]}"
+  rm "${convert_files[@]}"
   echo "Converted ${#convert_files[@]} image(s)."
 fi
 
