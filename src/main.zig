@@ -29,6 +29,7 @@ pub fn main() !void {
 
 fn generate() !void {
     try generateIndex();
+    try generateTodo();
 
     inline for (pages.articles) |article| {
         try generateArticle(article);
@@ -76,6 +77,16 @@ fn generateIndex() !void {
         "/index.html",
         home_str.items,
         "I'm a software engineer building systems that empower people to create.",
+    );
+}
+
+fn generateTodo() !void {
+    const tmpl = @embedFile("./templates/todo.html");
+
+    try generatePage(
+        "/todo.html",
+        tmpl,
+        "Oops, this page doesn't exist yet.",
     );
 }
 

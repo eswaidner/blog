@@ -49,4 +49,12 @@ pub const projects = [_]main.Project{
 };
 
 /// Articles with links in the "Articles" section.
-pub const articles = [_]main.Article{};
+pub const articles = [_]main.Article{
+    .{
+        .id = "intro-to-vulkan",
+        .name = "Intro to Vulkan",
+        .description = "Introduction to Vulkan graphics API high-level concepts.",
+        .date = "Nov 8, 2026",
+        .content = @embedFile("./articles/intro-to-vulkan.md"),
+    },
+};
