@@ -24,7 +24,6 @@ Storage Buffers are generic unstructured buffers that shaders read from or write
 
 //TODO Uniform Buffers
 
-
 ### Images
 
 Images are structured blocks of memory. Images have a format and dimensions. They are optimized for typical image data use cases such as sampling and can be used as render targets for rasterization.
@@ -61,4 +60,10 @@ Rasterization Pipelines execute a vertex shader, fragment shader, and optionally
 
 ## Wrapping Up
 
-This overview is not exhaustive. Vulkan has a lot of features that make it flexible to practically any use case, and I'm just focused on the ones typically used for realtime rendering/computation for PC platforms.
+This overview is not exhaustive. Vulkan has a lot of features that make it flexible enough for practically any use case. I just focused on the ones typically used for realtime rendering/computation for PC platforms.
+
+## Next Steps
+
+For a hands-on coding tutorial, I recommend [How to Vulkan in 2026](https://www.howtovulkan.com/) by Sascha Willems. It walks you through the process of building a minimal Vulkan 3D renderer with no abstractions.
+
+Go forth and render!
